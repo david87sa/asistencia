@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for asistencia-mysql on 2025-04-21T23:37:00-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'asistencia-mysql'
+primary_region = 'mia'
+
+[build]
+  image = 'mysql:8'
+
+[env]
+  MYSQL_DATABASE = 'asistencia'
+  MYSQL_ROOT_PASSWORD = 'root'
+
+[[mounts]]
+  source = 'mysqldata'
+  destination = '/var/lib/mysql'
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1

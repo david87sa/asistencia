@@ -12,6 +12,8 @@ COPY --from=build /app/target/*.jar app.jar
 
 # Puerto por defecto de Spring Boot
 EXPOSE 8080
-
+ENV SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/asistencia \
+  SPRING_DATASOURCE_USERNAME=root\
+  SPRING_DATASOURCE_PASSWORD=root
 # Comando de ejecución
 ENTRYPOINT ["java", "-jar", "app.jar"]
